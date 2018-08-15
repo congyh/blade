@@ -13,6 +13,7 @@ import java.lang.annotation.*;
 @Documented
 public @interface Order {
 
+    // order越大, 加载顺序越靠后
     int value() default Integer.MAX_VALUE;
 
 }

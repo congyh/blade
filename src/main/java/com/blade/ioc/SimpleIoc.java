@@ -8,12 +8,16 @@ import java.util.*;
 /**
  * The default IOC container implementation
  *
+ * Note: 接口中无需定义数据结构, 具体的数据结构是在实现类中定义的, 例如这里的pool
+ *
  * @author <a href="mailto:biezhi.me@gmail.com" target="_blank">biezhi</a>
  * @since 1.5
  */
+// Note: Slf4j这个注解会生成一个类同名的slf4j的log对象
 @Slf4j
 public class SimpleIoc implements Ioc {
 
+    // 使用简单的HashMap作为缓存池
     private final Map<String, BeanDefine> pool = new HashMap<>(32);
 
     /**
@@ -34,6 +38,8 @@ public class SimpleIoc implements Ioc {
         // add interface
         Class<?>[] interfaces = beanDefine.getType().getInterfaces();
         if (interfaces.length > 0) {
+            // Note: 对所有bean实现的接口, 也会根据接口名注册一个bean
+            // 便于接口inject时能够inject进实现类.
             for (Class<?> interfaceClazz : interfaces) {
                 this.addBean(interfaceClazz.getName(), beanDefine);
             }
@@ -67,6 +73,8 @@ public class SimpleIoc implements Ioc {
     public <T> T getBean(Class<T> type) {
         Object bean = this.getBean(type.getName());
         try {
+            // Note: Class<T>类的cast方法可以显式将对象转换为指定类型
+            // 注意: 这里不要用Class<?>这样的参数, 因为这样会失去具体的类型信息.
             return type.cast(bean);
         } catch (Exception e) {
             e.printStackTrace();

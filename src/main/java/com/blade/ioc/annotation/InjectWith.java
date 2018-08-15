@@ -6,6 +6,8 @@ import java.lang.annotation.*;
 
 /**
  * 凡是标注了 InjectFieldWith 的第三方 Annotation，就被允许进行自定义注入字段
+ *
+ * TODO 这个注解的作用还没有搞明白
  */
 @Target(ElementType.ANNOTATION_TYPE)
 @Retention(RetentionPolicy.RUNTIME)

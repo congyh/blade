@@ -17,7 +17,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Abstract Class Reader
+ * Abstract Class Reader(实际上是一个BaseClassReader, 并没有抽象方法了.)
+ * TODO 这个类还没有完全搞懂, 不过大概的作用应该是递归寻找类信息.
  *
  * @author <a href="mailto:biezhi.me@gmail.com" target="_blank">biezhi</a>
  * @since 1.0
@@ -111,6 +112,7 @@ public abstract class AbstractClassReader implements ClassReader {
         // Defines an enumerated collection and loops to process the URL in this directory
         Enumeration<URL> dirs;
         try {
+            // Note: 通过本类的classloader, 进行资源的加载, 传入的是路径. 返回的是URL的枚举
             dirs = this.getClass().getClassLoader().getResources(packageDirName);
             // Loop iterations down
             while (dirs.hasMoreElements()) {

@@ -16,6 +16,10 @@ import java.util.stream.Stream;
 /**
  * Get ClassReader by JAR or folder
  *
+ * 本类的作用是, 根据所处的环境是JAR还是folder来决定用哪种ClassReader(ClassPathClassReader或者JarReader)
+ *
+ * TODO 本类的实现还没有理清楚.
+ *
  * @author <a href="mailto:biezhi.me@gmail.com" target="_blank">biezhi</a>
  * @since 1.6.6
  */
@@ -23,6 +27,7 @@ import java.util.stream.Stream;
 @NoArgsConstructor
 public final class DynamicContext {
 
+    // ClassReader对象中含有Set<ClassInfo>, 也就是所有的Class定义信息
     private static final ClassReader classpathReader = new ClassPathClassReader();
     private static final ClassReader jarReader       = new JarReaderImpl();
     private static final String      SUFFIX_JAR      = ".jar";

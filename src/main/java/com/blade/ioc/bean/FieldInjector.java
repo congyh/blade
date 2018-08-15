@@ -21,9 +21,17 @@ public class FieldInjector implements Injector {
         this.field = field;
     }
 
+    /**
+     * injection方法的思路:
+     * 1. 获取field的类型
+     * 2. 根据类型获取能够inject的value bean
+     * 3. 通过set方法来将value bean注册进指定bean中
+     * @param bean bean instance
+     */
     @Override
     public void injection(Object bean) {
         try {
+            // Note: Field类是jdk对filed的抽象
             Class<?> fieldType = field.getType();
             Object   value     = ioc.getBean(fieldType);
             if (value == null) {

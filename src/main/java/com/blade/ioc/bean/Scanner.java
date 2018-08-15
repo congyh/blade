@@ -10,7 +10,7 @@ import java.lang.annotation.Annotation;
  * @date 2017/10/19
  */
 @Data
-@Builder
+@Builder // Note: Builder方便的实现了builder模式.
 public class Scanner {
 
     private String                      packageName;

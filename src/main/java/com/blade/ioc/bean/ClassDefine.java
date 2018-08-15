@@ -8,12 +8,16 @@ import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
+/**
+ * TODO 这个类是做什么的还没有发现
+ */
 public final class ClassDefine {
 
     private static final ConcurrentHashMap<Class<?>, ClassDefine> pool = new ConcurrentHashMap<Class<?>, ClassDefine>(128);
 
     private final Class<?> clazz;
 
+    // Note: 私有化构造函数, 防止外部误使用
     private ClassDefine(Class<?> type) {
         this.clazz = type;
     }

@@ -22,7 +22,7 @@ import java.util.jar.JarFile;
  * @since 1.0
  */
 @Slf4j
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(callSuper = true) // TODO 这个注解的用法还没有看懂
 public class JarReaderImpl extends AbstractClassReader implements ClassReader {
 
     private static final String JAR_FILE   = "jar:file:";

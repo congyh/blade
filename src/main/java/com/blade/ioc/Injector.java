@@ -11,6 +11,8 @@ public interface Injector {
     /**
      * Injection bean
      *
+     * 注意: 这里的bean是inject的受体
+     *
      * @param bean bean instance
      */
     void injection(Object bean);
